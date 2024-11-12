@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import express from "express";
 import bcrypt from "bcrypt";
 import cors from "cors";
@@ -11,11 +13,11 @@ import { handleImage, handleApiCall } from "./controllers/image.js";
 const db = knex({
   client: "pg",
   connection: {
-    host: "aws-0-eu-west-3.pooler.supabase.com",
-    port: 5432,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: "postgres",
+    database: process.env.DB_NAME,
   },
 });
 
